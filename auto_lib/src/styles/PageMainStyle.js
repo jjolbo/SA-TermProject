@@ -1,5 +1,4 @@
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
-import App from "../App";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
