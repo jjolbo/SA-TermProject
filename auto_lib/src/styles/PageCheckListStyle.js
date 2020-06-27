@@ -8,6 +8,13 @@ const useStyles = makeStyles((theme: Theme) =>
         checkTable:{
             marginTop: 20,
         },
+        buttonsLayout:{
+            marginLeft: 430,
+            marginTop: 10,
+        },
+        cancelBtn:{
+            marginRight: 10,
+        }
     }),
 );
 
