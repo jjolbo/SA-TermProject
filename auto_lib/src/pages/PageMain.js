@@ -20,7 +20,7 @@ const images = [
         url: 'https://t1.daumcdn.net/cfile/tistory/995B0D395C3349BD05',
         title: '대출 기록 확인',
         width: '33.3%',
-        path: 'checklist',
+        path: 'login',
     },
 ];
 

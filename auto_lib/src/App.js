@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
-import {Home, Loan, Return, CheckList} from './pages';
+import {Home, Loan, Return, CheckList, Login} from './pages';
 
 function App() {
     return (
@@ -9,7 +9,8 @@ function App() {
             <Switch>
                 <Route path="/loan" component={Loan}/>
                 <Route path="/return" component={Return}/>
-                <Route path="/checklist" component={CheckList}/>
+                <Route path="/login" component={Login}/>
+                <Route path="/checklist/:id" component={CheckList}/>
             </Switch>
         </div>
     );

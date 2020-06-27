@@ -15,13 +15,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function ImageAvatars() {
+export default function AvatarComponent(props) {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-            <p className={classes.name}>이정하님의 대출 기록</p>
+            <p className={classes.name}>{props.name}의 대출 기록</p>
         </div>
     );
 }

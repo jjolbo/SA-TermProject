@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         cancelBtn:{
             marginRight: 10,
+        },
+        loginBtn:{
+            margin: 10,
         }
     }),
 );
