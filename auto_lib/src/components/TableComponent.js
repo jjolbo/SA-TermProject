@@ -23,7 +23,7 @@ const rows = [
     createData('000405','어린 왕자', '2020-06-02', '2020-06-08',6)
 ];
 
-export default function SimpleTable() {
+export default function SimpleTable(props) {
     const classes = useStyles();
 
     return (
@@ -40,18 +40,16 @@ export default function SimpleTable() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row, idx) => (
-                        <TableRow key={row.name}>
-                            <TableCell component="th" scope="row">
-                                {idx+1}
-                            </TableCell>
-                            <TableCell align="left">{row.id}</TableCell>
-                            <TableCell align="left">{row.name}</TableCell>
-                            <TableCell align="left">{row.start}</TableCell>
-                            <TableCell align="left">{row.end}</TableCell>
-                            <TableCell align="left">{row.during}일</TableCell>
-                        </TableRow>
-                    ))}
+                    <TableRow key={props.name}>
+                        <TableCell component="th" scope="row">
+                            {props.idx}
+                        </TableCell>
+                        <TableCell align="left">{props.id}</TableCell>
+                        <TableCell align="left">{props.name}</TableCell>
+                        <TableCell align="left">{props.start}</TableCell>
+                        <TableCell align="left">{props.end}</TableCell>
+                        <TableCell align="left">{props.during}일</TableCell>
+                    </TableRow>
                 </TableBody>
             </Table>
         </TableContainer>

@@ -20,8 +20,8 @@ export default function AvatarComponent(props) {
 
     return (
         <div className={classes.root}>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-            <p className={classes.name}>{props.name}의 대출 기록</p>
+            <Avatar src="/broken-image.jpg" />
+            <p className={classes.name}>{props.name}님의 대출 기록</p>
         </div>
     );
 }

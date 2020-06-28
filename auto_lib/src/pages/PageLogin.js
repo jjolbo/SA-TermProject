@@ -4,6 +4,12 @@ import TextInputComponent from "../components/TextInputComponent";
 import * as firebase from 'firebase';
 import Button from '@material-ui/core/Button';
 import {useHistory} from "react-router-dom";
+import { observer, inject } from 'mobx-react';
+
+// @inject(stores => ({
+//     checkListStore: stores.checkListStore,
+// }))
+// @observer
 
 function PageLogin() {
     const classes = useStyles();
