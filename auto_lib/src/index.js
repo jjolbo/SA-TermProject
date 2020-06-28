@@ -5,8 +5,6 @@ import App from './App';
 import {BrowserRouter} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import * as firebase from 'firebase';
-import {Provider} from "mobx-react";
-import RootStore from "./stores";
 
 const config = {
     apiKey: "AIzaSyDIubT7S1mlJRwUHCELzoVOW2VHs5xkulo",
@@ -17,16 +15,12 @@ const config = {
 
 firebase.initializeApp(config);
 
-const root = new RootStore();
-
 ReactDOM.render(
-    <Provider {...root}>
         <React.StrictMode>
             <BrowserRouter>
                 <App/>
             </BrowserRouter>
-        </React.StrictMode>
-    </Provider>,
+        </React.StrictMode>,
     document.getElementById('root')
 );
 

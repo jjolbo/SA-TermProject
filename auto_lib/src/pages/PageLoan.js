@@ -53,17 +53,17 @@ function PageLoan() {
 
     const handleChange = (value, type) => {
         if (type === 0) {
-            setBNumber(value)
+            setBNumber(value.trim())
         } else if (type === 1) {
             setBName(value)
         } else if (type === 2) {
-            setAuthor(value)
+            setAuthor(value.trim())
         } else if (type === 3) {
-            setPublisher(value)
+            setPublisher(value.trim())
         } else if (type === 4) {
-            setName(value)
+            setName(value.trim())
         } else if (type === 5) {
-            setNumber(value)
+            setNumber(value.trim())
         }
 
     }

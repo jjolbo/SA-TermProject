@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -8,23 +8,38 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
+    body: {
+        backgroundColor: '#e57373'
+    },
+}));
 
-});
+const calcDate = (endDate) => {
+    let date = new Date();
+    let y = date.getFullYear();
+    let m = date.getMonth() + 1;
+    let d = date.getDate();
 
-function createData(id, name, start, end, during) {
-    return { id, name, start, end, during};
+    let res = endDate.split('-');
+
+    if (parseInt(res[2]) < d) {
+        if(parseInt(res[1]) <= m){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    } else return 0;
 }
 
-const rows = [
-    createData('971117','객체지향분석 및 설계', '2020-06-01', '2020-06-07', 5),
-    createData('980602','소프트웨어 아키텍처 스타일','2020-06-01', '2020-06-07',5),
-    createData('970625','맨큐의 핵심경제학', '2020-06-01', '2020-06-07',5),
-    createData('000405','어린 왕자', '2020-06-02', '2020-06-08',6)
-];
+export default function TableComponent(props) {
 
-export default function SimpleTable(props) {
     const classes = useStyles();
+
+    let keys = [];
+    for (let key in props.data) {
+        keys.push(key);
+    }
 
     return (
         <TableContainer component={Paper}>
@@ -34,22 +49,31 @@ export default function SimpleTable(props) {
                         <TableCell>번호</TableCell>
                         <TableCell align="left">일련번호</TableCell>
                         <TableCell align="left">책 제목</TableCell>
+                        <TableCell align="left">저자 이름</TableCell>
+                        <TableCell align="left">출판사 이름</TableCell>
                         <TableCell align="left">대출일</TableCell>
-                        <TableCell align="left">마감일</TableCell>
-                        <TableCell align="left">남은 기간</TableCell>
+                        <TableCell align="left">반납일</TableCell>
+                        <TableCell align="left">상태</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    <TableRow key={props.name}>
-                        <TableCell component="th" scope="row">
-                            {props.idx}
-                        </TableCell>
-                        <TableCell align="left">{props.id}</TableCell>
-                        <TableCell align="left">{props.name}</TableCell>
-                        <TableCell align="left">{props.start}</TableCell>
-                        <TableCell align="left">{props.end}</TableCell>
-                        <TableCell align="left">{props.during}일</TableCell>
-                    </TableRow>
+                    {keys.map((key, id) => (
+                        <>
+                            <TableRow key={id} className={calcDate(props.data[key].end_date) === 1 && classes.body}>
+                                <TableCell component="th" scope="row">
+                                    {id + 1}
+                                </TableCell>
+                                <TableCell align="left">{key}</TableCell>
+                                <TableCell align="left">{props.data[key].b_name}</TableCell>
+                                <TableCell align="left">{props.data[key].author}</TableCell>
+                                <TableCell align="left">{props.data[key].publisher}</TableCell>
+                                <TableCell align="left">{props.data[key].start_date}</TableCell>
+                                <TableCell align="left">{props.data[key].end_date}</TableCell>
+                                <TableCell
+                                    align="left">{props.data[key].status === 'loan' ? '대출중' : '반납완료'}{calcDate(props.data[key].end_date) === 1 && '(기한초과)'}</TableCell>
+                            </TableRow>
+                        </>
+                    ))}
                 </TableBody>
             </Table>
         </TableContainer>
